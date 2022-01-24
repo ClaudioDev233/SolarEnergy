@@ -1,12 +1,21 @@
 import logo1 from "../../assets/images/logo1.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Inputs from "../inputs";
 import { userSchema, testeUserSchema } from "../../Validations/userValidation";
-import { LoginContainer, LoginSection, LoginForm, LoginImage } from "./styles";
+import {
+  LoginContainer,
+  LoginSection,
+  LoginForm,
+  LoginImage,
+  ErrorMessage,
+} from "./styles";
 
 export default function Login() {
   const [email, setEmail] = useState("");
+  const [validateEmail, setValidateEmail] = useState();
   const [senha, setSenha] = useState("");
+  const [validatePassword, setValidatePassword] = useState();
+  const [validate, setValidate] = useState("");
 
   async function coiso(event) {
     event.preventDefault();
@@ -14,29 +23,46 @@ export default function Login() {
       email: event.target[0].value,
       password: event.target[1].value,
     };
+    console.log(formData.email);
     const isValid = await userSchema.isValid(formData);
-    if (isValid === true) {
-      console.log("Validou email");
+    if (isValid) {
+      console.log("Email ok");
+      setValidateEmail("");
     } else {
-      console.log("errou algo ai parceiro");
+      setValidateEmail("Erro no email");
     }
     const tudovalido = await testeUserSchema.isValid(formData);
-    if (tudovalido === true) {
-      console.log("tudo valido é", tudovalido);
+    if (tudovalido) {
+      console.log("senha ok");
+      setValidatePassword("");
     } else {
-      console.log("tudo valido é", tudovalido);
+      setValidatePassword("Erro na senha");
     }
 
     if (tudovalido && isValid === true) {
-      console.log("TÁ TUDO VALIDADO");
+      console.log(email, senha);
+      setValidate(true);
     } else if (tudovalido === true && isValid === false) {
       console.log("Email não é valido");
+      setValidate(false);
     } else if (tudovalido === false && isValid === true) {
       console.log("senha não é valida");
+      setValidate(false);
     } else {
       console.log("tá tudo errado");
+      setValidate(false);
     }
   }
+
+  useEffect(() => {
+    async function handleValidation() {
+      if (validate === true) {
+        alert("Logando");
+      }
+    }
+    console.log("meu validate é", validate);
+    handleValidation();
+  }, [validate]);
 
   return (
     <>
@@ -53,6 +79,9 @@ export default function Login() {
                 setEmail(event.target.value);
               }}
             ></Inputs>
+            <ErrorMessage>
+              {validate === false ? <p>{validateEmail}</p> : <></>}
+            </ErrorMessage>
             <Inputs
               type="password"
               placeholder="Senha"
@@ -60,6 +89,9 @@ export default function Login() {
                 setSenha(event.target.value);
               }}
             ></Inputs>
+            <ErrorMessage>
+              {validate === false ? <p>{validatePassword}</p> : <></>}
+            </ErrorMessage>
             <Inputs type="submit">Entrar</Inputs>
           </LoginForm>
         </LoginSection>

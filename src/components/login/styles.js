@@ -18,3 +18,8 @@ export const LoginForm = styled.form`
 export const LoginImage = styled.section`
   width: fit-content;
 `;
+export const ErrorMessage = styled.div`
+  color: #dc3545;
+  font-size: 11px;
+  margin-top: 2px;
+`;
