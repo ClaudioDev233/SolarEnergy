@@ -1,3 +1,9 @@
+import NavMenu from "../../components/menu";
+
 export default function PowerGeneration() {
-  return <p>Power Generation</p>;
+  return (
+    <>
+      <p>GERASAMBA</p>;<NavMenu></NavMenu>
+    </>
+  );
 }

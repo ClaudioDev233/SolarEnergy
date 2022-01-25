@@ -1,3 +1,9 @@
+import NavMenu from "../../components/menu";
 export default function SignUp() {
-  return <p>Cadastro de Unidades</p>;
+  return (
+    <>
+      <p>CADASTRO DE UNIDADES</p>
+      <NavMenu></NavMenu>
+    </>
+  );
 }
