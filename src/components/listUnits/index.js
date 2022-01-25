@@ -1,9 +1,10 @@
 import { UnitContext } from "../../context/unitContext";
-import { useContext, useEffect, useState } from "react";
+import { Children, useContext, useEffect, useState } from "react";
 import axios from "axios";
 export default function ListUnits() {
   const { setMode } = useContext(UnitContext);
   const [data, setData] = useState([]);
+
   useEffect(() => {
     async function getData() {
       await axios
@@ -31,15 +32,21 @@ export default function ListUnits() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>155</td>
-              <td>Painel 1</td>
-              <td>Rua tal</td>
-              <td>Blebers</td>
-              <td>Modelo</td>
-              <td>botao</td>
-              <td>botao vemr</td>
-            </tr>
+            {Children.toArray(
+              data.map((unidade) => {
+                return (
+                  <tr>
+                    <td>{unidade.id}</td>
+                    <td>{unidade.apelido}</td>
+                    <td>{unidade.local}</td>
+                    <td>{unidade.marca}</td>
+                    <td>{unidade.modelo}</td>
+                    <td>botao</td>
+                    <td>botao vemr</td>
+                  </tr>
+                );
+              })
+            )}
           </tbody>
         </table>
         <button
