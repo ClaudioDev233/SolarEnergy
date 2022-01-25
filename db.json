@@ -1,0 +1,11 @@
+{
+  "unidades": [
+    {
+      "id": 1,
+      "apelido": "Painel 1",
+      "local": "rua tal",
+      "marca": "essa marca",
+      "modelo": "modelo tal"
+    }
+  ]
+}
