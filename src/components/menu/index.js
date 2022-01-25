@@ -13,7 +13,7 @@ export default function NavMenu() {
 
           <li onClick={() => history("/unitList")}>Unidades </li>
 
-          <li onClick={() => history("/unitSignUp")}>
+          <li onClick={() => history("/unitPowerGeneration")}>
             Cadastro de energia gerada
           </li>
         </ul>

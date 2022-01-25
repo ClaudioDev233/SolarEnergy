@@ -11,11 +11,15 @@ import { createContext, useState } from "react";
 
 export const UnitContext = createContext([]);
 
-export default function UnitProvider({ children }) {
+export function UnitProvider({ children }) {
+  const [mode, setMode] = useState("");
+
   return (
     <UnitContext.Provider
       value={{
-        context: "teste",
+        context: "Estou consumindo o contexto!",
+        mode: mode,
+        setMode: setMode,
       }}
     >
       {children}
