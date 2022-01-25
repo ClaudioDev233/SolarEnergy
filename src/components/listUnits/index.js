@@ -3,6 +3,7 @@ import { Children, useContext, useEffect, useState } from "react";
 import axios from "axios";
 export default function ListUnits() {
   const { setMode } = useContext(UnitContext);
+
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -14,9 +15,22 @@ export default function ListUnits() {
     getData();
   }, []);
 
+  //talvez criar um contexto?
+
+  function removeUnit(unit) {
+    const id = unit.id;
+    axios
+      .delete(`http://localhost:3333/unidades/${id}`, {
+        params: {
+          id: id,
+        },
+      })
+      .then((resp) => console.log(resp));
+  }
+
   return (
     <>
-      <>{console.log(data[0])}</>
+      <>{console.log(data)}</>
       <div>
         <p>Unidaditas</p>
         <table>
@@ -42,7 +56,15 @@ export default function ListUnits() {
                     <td>{unidade.marca}</td>
                     <td>{unidade.modelo}</td>
                     <td>botao</td>
-                    <td>botao vemr</td>
+                    <td>
+                      <button
+                        onClick={() => {
+                          removeUnit(unidade);
+                        }}
+                      >
+                        {unidade.id}
+                      </button>
+                    </td>
                   </tr>
                 );
               })
