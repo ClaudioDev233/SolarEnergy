@@ -1,6 +1,7 @@
 import logo1 from "../../assets/images/logo1.png";
 import { useEffect, useState } from "react";
 import Inputs from "../inputs";
+import { useNavigate } from "react-router-dom";
 import { userSchema, testeUserSchema } from "../../Validations/userValidation";
 import {
   LoginContainer,
@@ -17,8 +18,11 @@ export default function Login() {
   const [validatePassword, setValidatePassword] = useState();
   const [validate, setValidate] = useState("");
 
+  const history = useNavigate(); // redireciona
+
   async function coiso(event) {
     event.preventDefault();
+
     let formData = {
       email: event.target[0].value,
       password: event.target[1].value,
@@ -42,6 +46,7 @@ export default function Login() {
     if (tudovalido && isValid === true) {
       console.log(email, senha);
       setValidate(true);
+      history("/dashboard"); //redireciona
     } else if (tudovalido === true && isValid === false) {
       console.log("Email não é valido");
       setValidate(false);
@@ -92,7 +97,7 @@ export default function Login() {
             <ErrorMessage>
               {validate === false ? <p>{validatePassword}</p> : <></>}
             </ErrorMessage>
-            <Inputs type="submit">Entrar</Inputs>
+            <Inputs type="submit" name="Olá"></Inputs>
           </LoginForm>
         </LoginSection>
       </LoginContainer>
