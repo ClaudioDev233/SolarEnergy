@@ -1,10 +1,21 @@
 import { UnitContext } from "../../context/unitContext";
-import { useContext } from "react";
-
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
 export default function ListUnits() {
   const { setMode } = useContext(UnitContext);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    async function getData() {
+      await axios
+        .get("http://localhost:3333/unidades")
+        .then((resp) => setData(resp.data));
+    }
+    getData();
+  }, []);
+
   return (
     <>
+      <>{console.log(data[0])}</>
       <div>
         <p>Unidaditas</p>
         <table>
