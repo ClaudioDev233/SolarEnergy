@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Children } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -9,7 +9,7 @@ export default function ListUnits() {
 
   useEffect(() => {
     async function getData() {
-      await axios
+      axios
         .get("http://localhost:3333/unidades")
         .then((resp) => setData(resp.data));
     }
@@ -39,26 +39,48 @@ export default function ListUnits() {
 
   return (
     <>
-      <p>Lista de unidades</p>
-      {data.map((unidade) => {
-        return (
-          <div className="Componente de Lista">
-            <div>
-              <p>{unidade.apelido}</p>
-              <button
-                onClick={() => {
-                  removeUnit(unidade);
-                }}
-              >
-                remover
-              </button>
-              <button>
-                <Link to={`/editUnit/${unidade.id}`}>editar</Link>
-              </button>
-            </div>
-          </div>
-        );
-      })}
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Local</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>#</th>
+            <th>#</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Children.toArray(
+            data.map((unidade) => {
+              return (
+                <tr>
+                  <td>{unidade.id}</td>
+                  <td>{unidade.apelido}</td>
+                  <td>{unidade.local}</td>
+                  <td> {unidade.marca} </td>
+                  <td> {unidade.modelo} </td>
+                  <td>
+                    <button>
+                      <Link to={`/editUnit/${unidade.id}`}>editar</Link>
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      onClick={() => {
+                        removeUnit(unidade);
+                      }}
+                    >
+                      remover
+                    </button>
+                  </td>
+                </tr>
+              );
+            })
+          )}
+        </tbody>
+      </table>
       <button>
         <Link to={`/createUnit/`}>Crirar Nova Unidade</Link>
       </button>
