@@ -7,15 +7,18 @@ export default function SignUpUnit() {
   const [locale, setLocale] = useState();
   const [brand, setBrand] = useState();
   const [model, setModel] = useState();
+  const [active, setActive] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
+    console.log(active);
     setMode("unitSignUp");
     axios.post("http://localhost:3333/unidades", {
       apelido: nickname,
       local: locale,
       marca: brand,
       modelo: model,
+      ativo: active,
     });
   }
 
@@ -66,7 +69,12 @@ export default function SignUpUnit() {
           </label>
           <label>
             Ativo
-            <input type="checkbox"></input>
+            <input
+              type="checkbox"
+              onChange={(e) => {
+                setActive(e.target.checked);
+              }}
+            ></input>
           </label>
           <input type="submit" value="Cadastrar"></input>
         </form>

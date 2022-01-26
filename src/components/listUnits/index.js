@@ -1,5 +1,5 @@
 import { UnitContext } from "../../context/unitContext";
-import { Children, useCallback, useContext, useEffect, useState } from "react";
+import { Children, useContext, useEffect, useState } from "react";
 import axios from "axios";
 export default function ListUnits() {
   const { setMode } = useContext(UnitContext);
@@ -15,6 +15,7 @@ export default function ListUnits() {
     }
     getData();
   }, []);
+
   // fazer um filter para remover da pagina
   function removeUnit(unit) {
     const id = unit.id;
@@ -25,6 +26,7 @@ export default function ListUnits() {
     });
     removeFromTable(id);
   }
+
   function removeFromTable(id) {
     const newData = data.filter((unit) => {
       if (unit.id === id) {
@@ -38,7 +40,6 @@ export default function ListUnits() {
 
   return (
     <>
-      <>{console.log(data)}</>
       <div>
         <p>Unidaditas</p>
         <table>

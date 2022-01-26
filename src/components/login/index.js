@@ -2,12 +2,11 @@ import logo1 from "../../assets/images/logo1.png";
 import { useEffect, useState } from "react";
 import Inputs from "../inputs";
 import { useNavigate } from "react-router-dom";
-import { userSchema, testeUserSchema } from "../../Validations/userValidation";
+import { emailSchema, passwordSchema } from "../../Validations/userValidation";
 import {
   LoginContainer,
   LoginSection,
   LoginForm,
-  LoginImage,
   ErrorMessage,
 } from "./styles";
 
@@ -27,34 +26,27 @@ export default function Login() {
       email: event.target[0].value,
       password: event.target[1].value,
     };
-    console.log(formData.email);
-    const isValid = await userSchema.isValid(formData);
-    if (isValid) {
-      console.log("Email ok");
+    const emailIsValid = await emailSchema.isValid(formData);
+    if (emailIsValid) {
       setValidateEmail("");
     } else {
       setValidateEmail("Erro no email");
     }
-    const tudovalido = await testeUserSchema.isValid(formData);
-    if (tudovalido) {
-      console.log("senha ok");
+    const passordValid = await passwordSchema.isValid(formData);
+    if (passordValid) {
       setValidatePassword("");
     } else {
       setValidatePassword("Erro na senha");
     }
 
-    if (tudovalido && isValid === true) {
-      console.log(email, senha);
+    if (passordValid && emailIsValid === true) {
       setValidate(true);
       history("/dashboard"); //redireciona
-    } else if (tudovalido === true && isValid === false) {
-      console.log("Email não é valido");
+    } else if (passordValid === true && emailIsValid === false) {
       setValidate(false);
-    } else if (tudovalido === false && isValid === true) {
-      console.log("senha não é valida");
+    } else if (passordValid === false && emailIsValid === true) {
       setValidate(false);
     } else {
-      console.log("tá tudo errado");
       setValidate(false);
     }
   }
