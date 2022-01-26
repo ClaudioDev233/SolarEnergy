@@ -1,3 +1,36 @@
 {
-  "unidades": []
+  "unidades": [
+    {
+      "apelido": "nickname",
+      "local": "locale",
+      "marca": "brand",
+      "modelo": "mode",
+      "ativo": "active",
+      "id": 1
+    },
+    {
+      "apelido": "nickname2",
+      "local": "locale2",
+      "marca": "brand2",
+      "modelo": "mode2",
+      "ativo": "active2",
+      "id": 2
+    },
+    {
+      "apelido": "1",
+      "local": "2",
+      "marca": "3",
+      "modelo": "4",
+      "ativo": true,
+      "id": 3
+    },
+    {
+      "apelido": "teste",
+      "local": "teste",
+      "marca": "teste",
+      "modelo": "teastea",
+      "ativo": true,
+      "id": 4
+    }
+  ]
 }

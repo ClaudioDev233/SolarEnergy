@@ -57,7 +57,6 @@ export default function Login() {
         alert("Logando");
       }
     }
-    console.log("meu validate é", validate);
     handleValidation();
   }, [validate]);
 

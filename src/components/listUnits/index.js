@@ -1,12 +1,12 @@
-import { UnitContext } from "../../context/unitContext";
-import { Children, useContext, useEffect, useState } from "react";
-import axios from "axios";
-export default function ListUnits() {
-  const { setMode } = useContext(UnitContext);
+import { useState, useEffect } from "react";
 
+import { Link } from "react-router-dom";
+
+import axios from "axios";
+
+export default function ListUnits() {
   const [data, setData] = useState([]);
 
-  //axios interceptors
   useEffect(() => {
     async function getData() {
       await axios
@@ -16,8 +16,7 @@ export default function ListUnits() {
     getData();
   }, []);
 
-  // fazer um filter para remover da pagina
-  function removeUnit(unit) {
+  async function removeUnit(unit) {
     const id = unit.id;
     axios.delete(`http://localhost:3333/unidades/${id}`, {
       params: {
@@ -27,7 +26,7 @@ export default function ListUnits() {
     removeFromTable(id);
   }
 
-  function removeFromTable(id) {
+  async function removeFromTable(id) {
     const newData = data.filter((unit) => {
       if (unit.id === id) {
         return false;
@@ -40,54 +39,29 @@ export default function ListUnits() {
 
   return (
     <>
-      <div>
-        <p>Unidaditas</p>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Apelido</th>
-              <th>Local</th>
-              <th>Marca</th>
-              <th>Modelo</th>
-              <th>#</th>
-              <th>#</th>
-            </tr>
-          </thead>
-          <tbody>
-            {Children.toArray(
-              data.map((unidade) => {
-                return (
-                  <tr>
-                    <td>{unidade.id}</td>
-                    <td>{unidade.apelido}</td>
-                    <td>{unidade.local}</td>
-                    <td>{unidade.marca}</td>
-                    <td>{unidade.modelo}</td>
-                    <td>botao</td>
-                    <td>
-                      <button
-                        onClick={() => {
-                          removeUnit(unidade);
-                        }}
-                      >
-                        {unidade.id}
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })
-            )}
-          </tbody>
-        </table>
-        <button
-          onClick={() => {
-            setMode("units");
-          }}
-        >
-          Nova Unidade
-        </button>
-      </div>
+      <p>Lista de unidades</p>
+      {data.map((unidade) => {
+        return (
+          <div className="Componente de Lista">
+            <div>
+              <p>{unidade.apelido}</p>
+              <button
+                onClick={() => {
+                  removeUnit(unidade);
+                }}
+              >
+                remover
+              </button>
+              <button>
+                <Link to={`/editUnit/${unidade.id}`}>editar</Link>
+              </button>
+            </div>
+          </div>
+        );
+      })}
+      <button>
+        <Link to={`/createUnit/`}>Crirar Nova Unidade</Link>
+      </button>
     </>
   );
 }
