@@ -4,8 +4,7 @@ import Menu from "../../components/menu";
 export default function LoginPage() {
   return (
     <>
-      {/* <Login></Login> */}
-      <Menu></Menu>
+      <Login></Login>
     </>
   );
 }

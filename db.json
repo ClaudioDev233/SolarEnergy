@@ -1,25 +1,3 @@
 {
-  "unidades": [
-    {
-      "apelido": "as",
-      "local": " minhas",
-      "marca": "requests fu",
-      "modelo": "fununciam",
-      "id": 1
-    },
-    {
-      "apelido": "alá ",
-      "local": "\tta",
-      "marca": "funcion",
-      "modelo": "nadno",
-      "id": 2
-    },
-    {
-      "apelido": "a",
-      "local": "a",
-      "marca": "a",
-      "modelo": "a",
-      "id": 3
-    }
-  ]
+  "unidades": []
 }

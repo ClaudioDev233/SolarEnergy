@@ -1,11 +1,12 @@
 import { UnitContext } from "../../context/unitContext";
-import { Children, useContext, useEffect, useState } from "react";
+import { Children, useCallback, useContext, useEffect, useState } from "react";
 import axios from "axios";
 export default function ListUnits() {
   const { setMode } = useContext(UnitContext);
 
   const [data, setData] = useState([]);
 
+  //axios interceptors
   useEffect(() => {
     async function getData() {
       await axios
@@ -14,18 +15,25 @@ export default function ListUnits() {
     }
     getData();
   }, []);
-
-  //talvez criar um contexto?
-
+  // fazer um filter para remover da pagina
   function removeUnit(unit) {
     const id = unit.id;
-    axios
-      .delete(`http://localhost:3333/unidades/${id}`, {
-        params: {
-          id: id,
-        },
-      })
-      .then((resp) => console.log(resp));
+    axios.delete(`http://localhost:3333/unidades/${id}`, {
+      params: {
+        id: id,
+      },
+    });
+    removeFromTable(id);
+  }
+  function removeFromTable(id) {
+    const newData = data.filter((unit) => {
+      if (unit.id === id) {
+        return false;
+      } else {
+        return true;
+      }
+    });
+    setData(newData);
   }
 
   return (
