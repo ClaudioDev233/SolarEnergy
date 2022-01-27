@@ -1,27 +1,21 @@
 {
   "unidades": [
     {
-      "apelido": "Unidade1",
-      "local": "rj",
-      "marca": "coiso",
-      "modelo": "150w",
-      "ativo": true,
+      "apelido": "111",
+      "local": "111",
+      "marca": "111",
+      "modelo": "111",
+      "ativo": false,
       "id": 1
     },
     {
-      "apelido": "unidade2",
-      "local": "aidojasioji",
-      "marca": "duahduias",
-      "modelo": "200w",
-      "ativo": true,
+      "apelido": "222",
+      "local": "222",
+      "marca": "222",
+      "modelo": "222",
+      "ativo": false,
       "id": 2
     }
   ],
-  "geracoes": [
-    {
-      "id": 1,
-      "mes": 1,
-      "energia_gerada": 150
-    }
-  ]
+  "geracoes": []
 }

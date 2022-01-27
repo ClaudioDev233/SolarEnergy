@@ -23,6 +23,12 @@ export default function ListUnits() {
         id: id,
       },
     });
+
+    axios.delete(`http://localhost:3333/geracoes/${id}`, {
+      params: {
+        id: id,
+      },
+    });
     removeFromTable(id);
   }
 

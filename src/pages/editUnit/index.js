@@ -28,6 +28,7 @@ export default function EditUnit() {
       setLocal(data.local);
       setBrand(data.marca);
       setModel(data.modelo);
+      setActive(data.ativo);
     }
     handleDataValues();
   }, [data]);
@@ -94,7 +95,13 @@ export default function EditUnit() {
         </label>
         <label>
           Ativo
-          <input type="checkbox"></input>
+          <input
+            type="checkbox"
+            checked={active || ""}
+            onChange={(e) => {
+              setActive(e.target.checked);
+            }}
+          ></input>
         </label>
         <input type="submit" value="Editar"></input>
       </form>

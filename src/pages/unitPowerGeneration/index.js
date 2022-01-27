@@ -23,6 +23,7 @@ export default function PowerGeneration() {
             <option value="" disabled>
               Selecione
             </option>
+            {/* primeiro faz um filter para ver se a unidade esta ativo */}{" "}
             {data.map((unidade) => {
               return <option value={unidade.apelido}>{unidade.apelido}</option>;
             })}
