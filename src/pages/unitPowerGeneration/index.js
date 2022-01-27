@@ -6,12 +6,21 @@ export default function PowerGeneration() {
 
   useEffect(() => {
     async function getData() {
-      axios
-        .get("http://localhost:3333/unidades")
-        .then((resp) => setData(resp.data));
+      await axios.get("http://localhost:3333/unidades").then((resp) => {
+        const dataFiltered = resp.data.filter(
+          (unidade) => unidade.ativo === true
+        );
+        setData(dataFiltered);
+      });
     }
     getData();
   }, []);
+
+  async function handleActive() {
+    const isActive = data.filter((unidade) => unidade.ativo === true);
+    setData(...data, isActive);
+    console.log("aqui");
+  }
   return (
     <>
       {console.log(data)}
