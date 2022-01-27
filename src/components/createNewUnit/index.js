@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { v4 } from "uuid";
+
 export default function CreateNewUnit() {
   const [nickname, setNickname] = useState("");
   const [local, setLocal] = useState("");
@@ -13,14 +15,15 @@ export default function CreateNewUnit() {
   function handleSubmit(e) {
     e.preventDefault();
     console.log("estou aqui");
-    axios.post("http://localhost:3333/unidades", {
-      apelido: nickname,
-      local: local,
-      marca: brand,
-      modelo: model,
-      ativo: active,
-    });
-    redirect("/unitList");
+    axios
+      .post("http://localhost:3001/unidades", {
+        apelido: nickname,
+        local: local,
+        marca: brand,
+        modelo: model,
+        ativo: active,
+      })
+      .then(redirect("/unitList"));
     // colocar um navigate ?
   }
 

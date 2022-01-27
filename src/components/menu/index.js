@@ -1,5 +1,7 @@
-import { NavBar } from "./styles";
+import { NavBar, Button } from "./styles";
 import { useNavigate } from "react-router-dom";
+import logo1 from "../../assets/images/logo1.png";
+import { FaChartPie, FaChartBar, FaCog } from "react-icons/fa";
 
 export default function NavMenu() {
   const history = useNavigate();
@@ -7,16 +9,31 @@ export default function NavMenu() {
   return (
     <>
       <NavBar>
-        <p>Logo</p>
-        <ul>
-          <li onClick={() => history("/dashboard")}>Dashboard</li>
+        <section>
+          <img src={logo1}></img>
+        </section>
+        <section>
+          <Button onClick={() => history("/dashboard")}>
+            <FaChartPie />
 
-          <li onClick={() => history("/unitList")}>Unidades </li>
+            <p>Dashboard</p>
+          </Button>
 
-          <li onClick={() => history("/unitPowerGeneration")}>
-            Cadastro de energia gerada
-          </li>
-        </ul>
+          <Button onClick={() => history("/unitList")}>
+            <FaChartBar />
+            <p>Unidades</p>
+          </Button>
+
+          <Button onClick={() => history("/unitPowerGeneration")}>
+            <div>
+              <FaCog />
+            </div>
+
+            <div>
+              <p>Cadastro de energia gerada</p>
+            </div>
+          </Button>
+        </section>
       </NavBar>
     </>
   );

@@ -14,8 +14,8 @@ export default function EditUnit() {
   const [active, setActive] = useState("");
 
   useEffect(() => {
-    async function getData() {
-      await axios
+    function getData() {
+      axios
         .get(`http://localhost:3333/unidades/${params.id}`)
         .then((resp) => setData(resp.data));
     }

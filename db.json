@@ -1,21 +1,4 @@
 {
-  "unidades": [
-    {
-      "apelido": "111",
-      "local": "111",
-      "marca": "111",
-      "modelo": "111",
-      "ativo": true,
-      "id": 1
-    },
-    {
-      "apelido": "222",
-      "local": "222",
-      "marca": "222",
-      "modelo": "222",
-      "ativo": false,
-      "id": 2
-    }
-  ],
+  "unidades": [],
   "geracoes": []
 }

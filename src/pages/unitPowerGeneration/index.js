@@ -4,9 +4,13 @@ import { useState, useEffect } from "react";
 export default function PowerGeneration() {
   const [data, setData] = useState([]);
 
+  const [month, setMonth] = useState("");
+  const [energy, setEnergy] = useState("");
+  const [id, setId] = useState("");
+
   useEffect(() => {
     async function getData() {
-      await axios.get("http://localhost:3333/unidades").then((resp) => {
+      await axios.get("http://localhost:3001/unidades").then((resp) => {
         const dataFiltered = resp.data.filter(
           (unidade) => unidade.ativo === true
         );
@@ -16,35 +20,55 @@ export default function PowerGeneration() {
     getData();
   }, []);
 
-  async function handleActive() {
-    const isActive = data.filter((unidade) => unidade.ativo === true);
-    setData(...data, isActive);
-    console.log("aqui");
+  async function handlePostData() {
+    axios.post("http://localhost:3001/geracoes/", {
+      unidade_id: id,
+      energia_gerada: energy,
+      mes: month,
+    });
   }
+
+  // validação
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    handlePostData();
+  }
+
   return (
     <>
-      {console.log(data)}
       <p>LANÇAMENTO DE GERAÇÃO MENSAL</p>
-      <form>
+      <form
+        onSubmit={(e) => {
+          handleSubmit(e);
+        }}
+      >
         <label>
           Unidade Geradora
-          <select defaultValue="">
+          <select
+            defaultValue=""
+            onChange={(e) => {
+              setId(e.target.value);
+            }}
+          >
             <option value="" disabled>
               Selecione
             </option>
-            {/* primeiro faz um filter para ver se a unidade esta ativo */}{" "}
             {data.map((unidade) => {
-              return <option value={unidade.apelido}>{unidade.apelido}</option>;
+              return <option value={unidade.id}>{unidade.apelido}</option>;
             })}
           </select>
         </label>
         <label>
           Mes/Ano
-          <input type="date"></input>
+          <input type="date" onChange={(e) => setMonth(e.target.value)}></input>
         </label>
         <label>
           Total Kw Gerado
-          <input type="text"></input>
+          <input
+            type="text"
+            onChange={(e) => setEnergy(e.target.value)}
+          ></input>
         </label>
         <input type="submit" value="Cadastrar"></input>
       </form>

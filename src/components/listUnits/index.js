@@ -8,31 +8,32 @@ export default function ListUnits() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    async function getData() {
+    function getData() {
       axios
-        .get("http://localhost:3333/unidades")
+        .get("http://localhost:3001/unidades")
         .then((resp) => setData(resp.data));
     }
     getData();
   }, []);
 
-  async function removeUnit(unit) {
-    const id = unit.id;
-    axios.delete(`http://localhost:3333/unidades/${id}`, {
-      params: {
-        id: id,
-      },
+  function removeUnit(unit) {
+    axios.delete(`http://localhost:3001/unidades/${unit.id}`).then(async () => {
+      const resp = await axios.get(
+        `http://localhost:3001/geracoes?unidade_id=${unit.id}`
+      );
+      resp.data.forEach(
+        async (receivedData) =>
+          await axios.delete(
+            `http://localhost:3001/geracoes/${receivedData.id}`
+          )
+      );
     });
+    /* axios.delete(`http://localhost:3333/geracoes/${unit.id}`); */
 
-    axios.delete(`http://localhost:3333/geracoes/${id}`, {
-      params: {
-        id: id,
-      },
-    });
-    removeFromTable(id);
+    removeFromTable(unit.id);
   }
 
-  async function removeFromTable(id) {
+  function removeFromTable(id) {
     const newData = data.filter((unit) => {
       if (unit.id === id) {
         return false;
