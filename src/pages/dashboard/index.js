@@ -17,17 +17,27 @@ export default function Dashboard() {
 
       axios
         .get("http://localhost:3001/geracoes/")
-        .then((resp) => setGeneration(resp.data))
-        .then(generation.map((coiso) => console.log(coiso)));
+        .then((resp) => setGeneration(resp.data));
     }
     getData();
   }, []);
 
-  async function getEnergia() {
-    const filter = generation.map((energia) =>
-      console.log(energia.energia_gerada)
-    );
-    return filter;
+  useEffect(() => {
+    getGeneration(generation);
+  }, [generation]);
+
+  function getGeneration(power) {
+    console.log(power.length);
+    if (power.length === 0) {
+      return;
+    } else {
+      const powerArray = power.map((coisito) =>
+        parseInt(coisito.energia_gerada)
+      );
+      const sumPower = powerArray.reduce((coiso1, coiso2) => coiso2 + coiso1);
+      const powerAverage = Math.round(sumPower / units.length);
+      setFiltered(powerAverage);
+    }
   }
 
   return (
@@ -42,7 +52,7 @@ export default function Dashboard() {
         Unidades Inativas
         {units.filter((isActive) => isActive.ativo === !true).length}
       </p>
-      <p>Soma toda energia: </p>
+      <p>Soma toda energia: {filtered} </p>
       <div>
         <Line
           datasetIdKey="id"

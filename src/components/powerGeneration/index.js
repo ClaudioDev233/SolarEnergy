@@ -5,7 +5,7 @@ export default function UnitPowerGeneration() {
   const [data, setData] = useState([]);
 
   const [month, setMonth] = useState("");
-  const [energy, setEnergy] = useState("");
+  const [energy, setEnergy] = useState();
   const [id, setId] = useState("");
 
   useEffect(() => {
@@ -66,7 +66,7 @@ export default function UnitPowerGeneration() {
         <label>
           Total Kw Gerado
           <input
-            type="text"
+            type="number"
             onChange={(e) => setEnergy(e.target.value)}
           ></input>
         </label>
