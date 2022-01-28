@@ -8,6 +8,7 @@ export default function Dashboard() {
   const [units, setUnits] = useState([]);
   const [generation, setGeneration] = useState([]);
   const [filtered, setFiltered] = useState([]);
+  const [energy, setEnergy] = useState([]);
 
   useEffect(() => {
     function getData() {
@@ -34,6 +35,7 @@ export default function Dashboard() {
       const powerArray = power.map((coisito) =>
         parseInt(coisito.energia_gerada)
       );
+      setEnergy(powerArray);
       const sumPower = powerArray.reduce((coiso1, coiso2) => coiso2 + coiso1);
       const powerAverage = Math.round(sumPower / units.length);
       setFiltered(powerAverage);
@@ -42,6 +44,7 @@ export default function Dashboard() {
 
   return (
     <>
+      {console.log(energy)}
       <NavMenu></NavMenu>
       <p>Total e Unidades {units.length}</p>
       <p>
@@ -53,6 +56,7 @@ export default function Dashboard() {
         {units.filter((isActive) => isActive.ativo === !true).length}
       </p>
       <p>Soma toda energia: {filtered} </p>
+
       <div>
         <Line
           datasetIdKey="id"
@@ -64,7 +68,7 @@ export default function Dashboard() {
               },
               title: {
                 display: true,
-                text: "Chart.js Line Chart",
+                text: "Consumo Mensal",
               },
             },
           }}
@@ -87,7 +91,7 @@ export default function Dashboard() {
               {
                 id: 1,
                 label: "Energia Gerada",
-                data: [1, 2, 35, 12, 27, 83, 7, 8, 9, 10],
+                data: energy,
                 borderColor: "rgb(53, 162, 235)",
                 backgroundColor: "rgba(53, 162, 235, 0.5)",
               },

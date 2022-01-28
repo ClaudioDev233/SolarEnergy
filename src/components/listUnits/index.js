@@ -28,7 +28,6 @@ export default function ListUnits() {
           )
       );
     });
-    /* axios.delete(`http://localhost:3333/geracoes/${unit.id}`); */
 
     removeFromTable(unit.id);
   }
