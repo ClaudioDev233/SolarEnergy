@@ -1,18 +1,90 @@
 import NavMenu from "../../components/menu";
+import { Chart as ChartJS } from "chart.js/auto";
+import { Line } from "react-chartjs-2";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function Dashboard() {
+  const [units, setUnits] = useState([]);
+  const [generation, setGeneration] = useState([]);
+  const [filtered, setFiltered] = useState([]);
+
+  useEffect(() => {
+    function getData() {
+      axios
+        .get("http://localhost:3001/unidades/")
+        .then((resp) => setUnits(resp.data));
+
+      axios
+        .get("http://localhost:3001/geracoes/")
+        .then((resp) => setGeneration(resp.data))
+        .then(generation.map((coiso) => console.log(coiso)));
+    }
+    getData();
+  }, []);
+
+  async function getEnergia() {
+    const filter = generation.map((energia) =>
+      console.log(energia.energia_gerada)
+    );
+    return filter;
+  }
+
   return (
     <>
-      <div>DASHHHHH</div>
       <NavMenu></NavMenu>
-      <p>Card Legth das unidades</p>
-      <p>Filter das unidades ativas legth</p>
-      <p>Filter unidades Inativas legth</p>
+      <p>Total e Unidades {units.length}</p>
       <p>
-        Média (feita com reduce) para pegar a média de denergia das unidades
-        ativas
+        Unidades Ativas
+        {units.filter((isActive) => isActive.ativo === true).length}
       </p>
-      <p>GRAFICUZINHO</p>
+      <p>
+        Unidades Inativas
+        {units.filter((isActive) => isActive.ativo === !true).length}
+      </p>
+      <p>Soma toda energia: </p>
+      <div>
+        <Line
+          datasetIdKey="id"
+          options={{
+            responsive: true,
+            plugins: {
+              legend: {
+                position: "top",
+              },
+              title: {
+                display: true,
+                text: "Chart.js Line Chart",
+              },
+            },
+          }}
+          data={{
+            labels: [
+              "Jan",
+              "Fev",
+              "Mar",
+              "Abr",
+              "Mai",
+              "Jun",
+              "Jul",
+              "Ago",
+              "Set",
+              "Out",
+              "Nov",
+              "Dez",
+            ],
+            datasets: [
+              {
+                id: 1,
+                label: "Energia Gerada",
+                data: [1, 2, 35, 12, 27, 83, 7, 8, 9, 10],
+                borderColor: "rgb(53, 162, 235)",
+                backgroundColor: "rgba(53, 162, 235, 0.5)",
+              },
+            ],
+          }}
+        />
+      </div>
     </>
   );
 }

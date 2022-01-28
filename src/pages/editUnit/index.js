@@ -16,7 +16,7 @@ export default function EditUnit() {
   useEffect(() => {
     function getData() {
       axios
-        .get(`http://localhost:3333/unidades/${params.id}`)
+        .get(`http://localhost:3001/unidades/${params.id}`)
         .then((resp) => setData(resp.data));
     }
     getData();
@@ -35,7 +35,7 @@ export default function EditUnit() {
 
   function handleEdit(e) {
     e.preventDefault();
-    axios.put(`http://localhost:3333/unidades/${params.id}`, {
+    axios.put(`http://localhost:3001/unidades/${params.id}`, {
       apelido: nickname,
       local: local,
       marca: brand,
