@@ -27,7 +27,7 @@ export function retornaGeracoesPorMes(geracaoCompleta) {
 }
 
 function sorted(item1, item2) {
-  return parseInt(item1.mes) > parseInt(item2.mes); //transformar em data e comparar a data
+  return parseInt(item2.mes) < parseInt(item1.mes); //transformar em data e comparar a data
 }
 
 function converteMesLabel(grupoMes) {

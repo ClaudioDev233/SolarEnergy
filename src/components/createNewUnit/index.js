@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { v4 } from "uuid";
+import Checkbox from "../checkbox";
+
 import Inputs from "../inputs";
-import { Titulo, Container, Form } from "./styles";
+import { Titulo, Container, Form, SubmitButton } from "./styles";
 
 export default function CreateNewUnit() {
   const [nickname, setNickname] = useState("");
@@ -37,15 +38,6 @@ export default function CreateNewUnit() {
             handleSubmit(e);
           }}
         >
-          {/* <label>
-            Apelido
-            <input
-              type="text"
-              onChange={(e) => {
-                setNickname(e.target.value);
-              }}
-            ></input> */}
-
           <Inputs
             label="Apelido"
             placeholder="Painel 1"
@@ -81,14 +73,14 @@ export default function CreateNewUnit() {
           ></Inputs>
 
           {/* mudar o input checkbox */}
-          <Inputs
+          <Checkbox
             label="Ativo"
             type="checkbox"
             onChange={(e) => {
-              setActive(e.target.value);
+              setActive(e.target.checked);
             }}
-          ></Inputs>
-          <Inputs type="submit" value="Salvar"></Inputs>
+          ></Checkbox>
+          <SubmitButton type="submit" value="Salvar"></SubmitButton>
         </Form>
       </Container>
     </>

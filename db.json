@@ -1,11 +1,11 @@
 {
   "unidades": [
     {
-      "apelido": "aa",
-      "local": "aa",
-      "marca": "aaa",
-      "modelo": "aaa",
-      "ativo": "on",
+      "apelido": "",
+      "local": "",
+      "marca": "",
+      "modelo": "",
+      "ativo": true,
       "id": 1
     }
   ],

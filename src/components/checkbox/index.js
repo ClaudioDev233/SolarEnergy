@@ -1,10 +1,10 @@
 import { Label, Input } from "./styles";
 
-export default function Inputs({ label, ...otherProps }) {
+export default function Checkbox({ label, ...otherProps }) {
   return (
     <Label>
-      {label}
       <Input {...otherProps}></Input>
+      {label}
     </Label>
   );
 }
