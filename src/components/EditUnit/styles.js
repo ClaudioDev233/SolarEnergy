@@ -21,9 +21,9 @@ export const SubmitButton = styled.input`
   width: 252px;
   height: 59px;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 100;
   color: #ffffff;
-
+  letter-spacing: 0.5px;
   border: none;
   border-radius: 20px;
   background-color: #4c5df1;

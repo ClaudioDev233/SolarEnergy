@@ -72,7 +72,6 @@ export default function CreateNewUnit() {
             }}
           ></Inputs>
 
-          {/* mudar o input checkbox */}
           <Checkbox
             label="Ativo"
             type="checkbox"
