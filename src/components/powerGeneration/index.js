@@ -2,6 +2,9 @@ import axios from "axios";
 import "react-datepicker/dist/react-datepicker.css";
 
 import { useState, useEffect } from "react";
+import InputDate from "../inputDate";
+import Inputs from "../inputs";
+import { Container, Form, Label, Select, SubmitButton, Titulo } from "./styles";
 
 export default function UnitPowerGeneration() {
   const [data, setData] = useState([]);
@@ -48,47 +51,44 @@ export default function UnitPowerGeneration() {
 
   return (
     <>
-      <p>LANÇAMENTO DE GERAÇÃO MENSAL</p>
-      <form
-        onSubmit={(e) => {
-          handleSubmit(e);
-        }}
-      >
-        <label>
-          Unidade Geradora
-          <select
-            defaultValue=""
-            onChange={(e) => {
-              setId(e.target.value);
-            }}
-          >
-            <option value="" disabled>
-              Selecione
-            </option>
-            {data.map((unidade) => {
-              return <option value={unidade.id}>{unidade.apelido}</option>;
-            })}
-          </select>
-        </label>
-        <label>
-          Mes/Ano
-          <input
+      <Container>
+        <Form
+          onSubmit={(e) => {
+            handleSubmit(e);
+          }}
+        >
+          <Label>
+            Unidade Geradora
+            <Select
+              defaultValue=""
+              onChange={(e) => {
+                setId(e.target.value);
+              }}
+            >
+              <option value="" disabled>
+                Selecione
+              </option>
+              {data.map((unidade) => {
+                return <option value={unidade.id}>{unidade.apelido}</option>;
+              })}
+            </Select>
+          </Label>
+
+          <InputDate
+            label="Mes/Ano"
             type="month"
-            placeholder="mes"
             onChange={(e) => {
               setMonth(e.target.value);
             }}
-          ></input>
-        </label>
-        <label>
-          Total Kw Gerado
-          <input
+          />
+          <Inputs
+            label="Total Kw Gerado"
             type="number"
             onChange={(e) => setEnergy(e.target.value)}
-          ></input>
-        </label>
-        <input type="submit" value="Cadastrar"></input>
-      </form>
+          />
+          <SubmitButton type="submit" value="Cadastrar"></SubmitButton>
+        </Form>
+      </Container>
     </>
   );
 }

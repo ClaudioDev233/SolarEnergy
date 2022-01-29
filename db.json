@@ -1,4 +1,11 @@
 {
   "unidades": [],
-  "geracoes": []
+  "geracoes": [
+    {
+      "unidade_id": "",
+      "energia_gerada": "123",
+      "mes": "2022-01",
+      "id": 1
+    }
+  ]
 }
