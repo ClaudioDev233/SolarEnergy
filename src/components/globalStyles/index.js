@@ -1,8 +1,5 @@
-import { Global } from "./styles";
-export default function GlobalStyles({ children }) {
-  return (
-    <>
-      <Global>{children}</Global>
-    </>
-  );
-}
+import styled from "styled-components";
+
+export const H1 = styled.h1`
+  font-size: 30px;
+`;

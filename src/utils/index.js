@@ -7,13 +7,14 @@ export function retornaGeracoesPorMes(geracaoCompleta) {
       !grupoMes.filter((itemGrupoMes) => parGeracaoMes.mes === itemGrupoMes.mes)
         .length > 0
     ) {
+      console.log(grupoMes);
       grupoMes.push({
-        mes: converteMesLabel(parGeracaoMes.mes),
+        mes: parGeracaoMes.mes, // ussi aqui ta bugando
         geracao_energia: parseInt(parGeracaoMes.energia_gerada),
       });
     } else {
       grupoMes.forEach((itemGrupoMes) => {
-        if (itemGrupoMes.mes === converteMesLabel(parGeracaoMes.mes)) {
+        if (itemGrupoMes.mes === parGeracaoMes.mes) {
           itemGrupoMes.geracao_energia += parseInt(
             parGeracaoMes.energia_gerada
           );

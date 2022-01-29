@@ -80,7 +80,7 @@ export default function Dashboard() {
               {
                 id: 1,
                 label: "Energia Gerada",
-                data: energy.map((valor) => valor.geracao_energia),
+                data: energy.map((valor) => valor.geracao_energia), //verificar
                 borderColor: "rgb(53, 162, 235)",
                 backgroundColor: "rgba(53, 162, 235, 0.5)",
               },

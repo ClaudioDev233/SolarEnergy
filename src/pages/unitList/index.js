@@ -1,12 +1,12 @@
 import ListUnits from "../../components/listUnits";
-import NavMenu from "../../components/menu";
+import Template from "../../components/menu";
 
 export default function UnitList() {
   return (
     <>
-      <NavMenu></NavMenu>
-      <h1>Unidades</h1>
-      <ListUnits></ListUnits>
+      <Template titulo="Unidades">
+        <ListUnits></ListUnits>
+      </Template>
     </>
   );
 }

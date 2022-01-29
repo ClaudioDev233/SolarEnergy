@@ -1,58 +1,21 @@
 {
   "unidades": [
     {
-      "apelido": "1",
-      "local": "1",
-      "marca": "1",
-      "modelo": "1",
-      "ativo": true,
-      "id": 1
-    },
-    {
-      "apelido": "2",
-      "local": "2",
-      "marca": "2",
-      "modelo": "2",
+      "apelido": "11",
+      "local": "11",
+      "marca": "111",
+      "modelo": "111",
       "ativo": true,
       "id": 2
+    },
+    {
+      "apelido": "aa",
+      "local": "aa",
+      "marca": "aaa",
+      "modelo": "aaa",
+      "ativo": true,
+      "id": 3
     }
   ],
-  "geracoes": [
-    {
-      "unidade_id": "1",
-      "energia_gerada": "5",
-      "mes": "2021-12",
-      "id": 1
-    },
-    {
-      "unidade_id": "2",
-      "energia_gerada": "5",
-      "mes": "2021-12",
-      "id": 2
-    },
-    {
-      "unidade_id": "2",
-      "energia_gerada": "5",
-      "mes": "2021-02",
-      "id": 3
-    },
-    {
-      "unidade_id": "1",
-      "energia_gerada": "5",
-      "mes": "2021-02",
-      "id": 4
-    },
-    {
-      "unidade_id": "1",
-      "energia_gerada": "5",
-      "mes": "2022-02",
-      "id": 5
-    },
-    {
-      "unidade_id": "2",
-      "energia_gerada": "25",
-      "mes": "2022-02",
-      "id": 6
-    }
-  ]
+  "geracoes": []
 }

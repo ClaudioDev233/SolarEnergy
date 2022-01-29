@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 export default function UnitPowerGeneration() {
   const [data, setData] = useState([]);
-  const [startDate, setStartDate] = useState();
+
   const [month, setMonth] = useState("");
   const [energy, setEnergy] = useState("");
   const [id, setId] = useState("");

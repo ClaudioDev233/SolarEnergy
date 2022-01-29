@@ -4,6 +4,15 @@ import { Link } from "react-router-dom";
 
 import axios from "axios";
 
+import {
+  Section,
+  Table,
+  Thead,
+  Button,
+  TableContainer,
+  Titulo,
+} from "./styles";
+
 export default function ListUnits() {
   const [data, setData] = useState([]);
 
@@ -45,51 +54,59 @@ export default function ListUnits() {
 
   return (
     <>
-      <table>
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Nome</th>
-            <th>Local</th>
-            <th>Marca</th>
-            <th>Modelo</th>
-            <th>#</th>
-            <th>#</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Children.toArray(
-            data.map((unidade) => {
-              return (
-                <tr>
-                  <td>{unidade.id}</td>
-                  <td>{unidade.apelido}</td>
-                  <td>{unidade.local}</td>
-                  <td> {unidade.marca} </td>
-                  <td> {unidade.modelo} </td>
-                  <td>
-                    <button>
-                      <Link to={`/editUnit/${unidade.id}`}>editar</Link>
-                    </button>
-                  </td>
-                  <td>
-                    <button
-                      onClick={() => {
-                        removeUnit(unidade);
-                      }}
-                    >
-                      remover
-                    </button>
-                  </td>
-                </tr>
-              );
-            })
-          )}
-        </tbody>
-      </table>
-      <button>
-        <Link to={`/createUnit/`}>Crirar Nova Unidade</Link>
-      </button>
+      <Section>
+        <TableContainer>
+          <Titulo>Lista Unidades</Titulo>
+
+          <Table>
+            <Thead>
+              <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Local</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>#</th>
+                <th>#</th>
+              </tr>
+            </Thead>
+            <tbody>
+              {Children.toArray(
+                data.map((unidade) => {
+                  return (
+                    <tr>
+                      <td>{unidade.id}</td>
+                      <td>{unidade.apelido}</td>
+                      <td>{unidade.local}</td>
+                      <td> {unidade.marca} </td>
+                      <td> {unidade.modelo} </td>
+                      <td>
+                        <Button bg="#8DB51B" tamanho="default">
+                          <Link to={`/editUnit/${unidade.id}`}>Editar</Link>
+                        </Button>
+                      </td>
+                      <td>
+                        <Button
+                          bg="#D82D56"
+                          tamanho="default"
+                          onClick={() => {
+                            removeUnit(unidade);
+                          }}
+                        >
+                          Remover
+                        </Button>
+                      </td>
+                    </tr>
+                  );
+                })
+              )}
+            </tbody>
+          </Table>
+          <Button bg="#4C5DF1" align="flex-end">
+            <Link to={`/createUnit/`}>Criar Nova Unidade</Link>
+          </Button>
+        </TableContainer>
+      </Section>
     </>
   );
 }
