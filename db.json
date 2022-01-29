@@ -1,20 +1,12 @@
 {
   "unidades": [
     {
-      "apelido": "11",
-      "local": "11",
-      "marca": "111",
-      "modelo": "111",
-      "ativo": true,
-      "id": 2
-    },
-    {
       "apelido": "aa",
       "local": "aa",
       "marca": "aaa",
       "modelo": "aaa",
-      "ativo": true,
-      "id": 3
+      "ativo": "on",
+      "id": 1
     }
   ],
   "geracoes": []

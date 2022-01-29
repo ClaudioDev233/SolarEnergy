@@ -1,10 +1,10 @@
-export default function Inputs({ type, placeholder, onChange, name }) {
+import { InputContainer } from "./styles";
+
+export default function Inputs({ label, ...otherProps }) {
   return (
-    <input
-      type={type}
-      placeholder={placeholder}
-      onChange={onChange}
-      value={name}
-    ></input>
+    <InputContainer>
+      {label}
+      <input {...otherProps}></input>
+    </InputContainer>
   );
 }

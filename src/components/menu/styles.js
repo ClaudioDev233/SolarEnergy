@@ -5,6 +5,7 @@ export const MainContainer = styled.div`
   width: 100%;
   height: 100vh;
   font-family: "Poppins", sans-serif;
+  color: #374557;
 `;
 
 export const NavBar = styled.nav`
@@ -46,7 +47,7 @@ export const Section = styled.section`
   flex-direction: column;
   width: 100%;
   height: 100%;
-  background-color: #e8e8e8;
+  background-color: #fafafa;
 `;
 
 export const Titulo = styled.h1`

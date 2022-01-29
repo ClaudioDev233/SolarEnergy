@@ -11,6 +11,8 @@ import {
   Button,
   TableContainer,
   Titulo,
+  Tbody,
+  Tr,
 } from "./styles";
 
 export default function ListUnits() {
@@ -60,35 +62,42 @@ export default function ListUnits() {
 
           <Table>
             <Thead>
-              <tr>
-                <th>Id</th>
-                <th>Nome</th>
+              <Tr>
+                <th>ID</th>
+                <th>Apelido</th>
                 <th>Local</th>
                 <th>Marca</th>
                 <th>Modelo</th>
-                <th>#</th>
-                <th>#</th>
-              </tr>
+                <th></th>
+                <th></th>
+              </Tr>
             </Thead>
-            <tbody>
+            <Tbody>
               {Children.toArray(
                 data.map((unidade) => {
                   return (
-                    <tr>
+                    <Tr>
                       <td>{unidade.id}</td>
                       <td>{unidade.apelido}</td>
                       <td>{unidade.local}</td>
                       <td> {unidade.marca} </td>
                       <td> {unidade.modelo} </td>
                       <td>
-                        <Button bg="#8DB51B" tamanho="default">
+                        <Button
+                          bg="#8DB51B"
+                          tamanho={78}
+                          altura={40}
+                          radius={4}
+                        >
                           <Link to={`/editUnit/${unidade.id}`}>Editar</Link>
                         </Button>
                       </td>
                       <td>
                         <Button
                           bg="#D82D56"
-                          tamanho="default"
+                          radius={4}
+                          tamanho={78}
+                          altura={40}
                           onClick={() => {
                             removeUnit(unidade);
                           }}
@@ -96,13 +105,19 @@ export default function ListUnits() {
                           Remover
                         </Button>
                       </td>
-                    </tr>
+                    </Tr>
                   );
                 })
               )}
-            </tbody>
+            </Tbody>
           </Table>
-          <Button bg="#4C5DF1" align="flex-end">
+          <Button
+            bg="#4C5DF1"
+            tamanho={252}
+            altura={59}
+            radius={20}
+            align="flex-end"
+          >
             <Link to={`/createUnit/`}>Criar Nova Unidade</Link>
           </Button>
         </TableContainer>

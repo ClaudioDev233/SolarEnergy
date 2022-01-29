@@ -2,6 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
+import Inputs from "../inputs";
+import { Titulo, Container, Form } from "./styles";
 
 export default function CreateNewUnit() {
   const [nickname, setNickname] = useState("");
@@ -24,64 +26,71 @@ export default function CreateNewUnit() {
         ativo: active,
       })
       .then(redirect("/unitList"));
-    // colocar um navigate ?
   }
 
   return (
     <>
-      <h1>Criando nova Unidade</h1>
-      <form
-        onSubmit={(e) => {
-          handleSubmit(e);
-        }}
-      >
-        <label>
-          Apelido
-          <input
+      <Container>
+        <Titulo>Cadastro de Unidade Geradora</Titulo>
+        <Form
+          onSubmit={(e) => {
+            handleSubmit(e);
+          }}
+        >
+          {/* <label>
+            Apelido
+            <input
+              type="text"
+              onChange={(e) => {
+                setNickname(e.target.value);
+              }}
+            ></input> */}
+
+          <Inputs
+            label="Apelido"
+            placeholder="Painel 1"
             type="text"
             onChange={(e) => {
               setNickname(e.target.value);
             }}
-          ></input>
-        </label>
-        <label>
-          Local
-          <input
+          ></Inputs>
+          <Inputs
+            label="Local"
+            placeholder="Rua Alberto 430"
             type="text"
             onChange={(e) => {
               setLocal(e.target.value);
             }}
-          ></input>
-        </label>
-        <label>
-          Marca
-          <input
+          ></Inputs>
+
+          <Inputs
+            label="Marca"
+            placeholder="Resun"
             type="text"
             onChange={(e) => {
               setBrand(e.target.value);
             }}
-          ></input>
-        </label>
-        <label>
-          Modelo
-          <input
+          ></Inputs>
+          <Inputs
+            label="Modelo"
+            placeholder="150w"
             type="text"
             onChange={(e) => {
               setModel(e.target.value);
             }}
-          ></input>
-        </label>
-        <label>
-          Ativo
-          <input
+          ></Inputs>
+
+          {/* mudar o input checkbox */}
+          <Inputs
+            label="Ativo"
             type="checkbox"
             onChange={(e) => {
-              setActive(e.target.checked);
+              setActive(e.target.value);
             }}
-          ></input>
-        </label>
-        <input type="submit" value="Criar!"></input>
-      </form>
+          ></Inputs>
+          <Inputs type="submit" value="Salvar"></Inputs>
+        </Form>
+      </Container>
     </>
   );
 }
