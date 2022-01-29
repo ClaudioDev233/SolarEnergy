@@ -1,8 +1,7 @@
 import axios from "axios";
 import "react-datepicker/dist/react-datepicker.css";
-import DatePicker from "react-datepicker";
+
 import { useState, useEffect } from "react";
-import { FaBaseballBall } from "react-icons/fa";
 
 export default function UnitPowerGeneration() {
   const [data, setData] = useState([]);
@@ -23,7 +22,8 @@ export default function UnitPowerGeneration() {
     getData();
   }, []);
 
-  async function findMes() {
+  // checa se naquele mes já foi gerado um log de energia
+  async function handleCheckUnityGeneration() {
     const resp = await axios
       .get(`http://localhost:3001/geracoes?unidade_id=${id}`)
       .then((resp) => resp.data.map((mes) => mes.mes));
@@ -41,14 +41,9 @@ export default function UnitPowerGeneration() {
     }
   }
 
-  async function handlePostData() {}
-
-  // validação
-
   function handleSubmit(e) {
     e.preventDefault();
-    findMes();
-    /* handlePostData(); */
+    handleCheckUnityGeneration();
   }
 
   return (

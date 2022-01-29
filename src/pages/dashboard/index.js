@@ -4,6 +4,8 @@ import { Line } from "react-chartjs-2";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+import { retornaGeracoesPorMes } from "../../utils";
+
 export default function Dashboard() {
   const [units, setUnits] = useState([]);
   const [generation, setGeneration] = useState([]);
@@ -27,24 +29,24 @@ export default function Dashboard() {
     getGeneration(generation);
   }, [generation]);
 
+  // função que calcula a média de energia
   function getGeneration(power) {
-    console.log(power.length);
     if (power.length === 0) {
       return;
     } else {
-      const powerArray = power.map((coisito) =>
-        parseInt(coisito.energia_gerada)
+      const powerArray = power.map((geracoes) =>
+        parseInt(geracoes.energia_gerada)
       );
-      setEnergy(powerArray);
-      const sumPower = powerArray.reduce((coiso1, coiso2) => coiso2 + coiso1);
+      setEnergy(retornaGeracoesPorMes(generation));
+      const sumPower = powerArray.reduce((valor1, valor2) => valor2 + valor1);
       const powerAverage = Math.round(sumPower / units.length);
-      setFiltered(powerAverage);
+      powerAverage >= 1 ? setFiltered(powerAverage) : setFiltered("");
     }
+    console.log(energy);
   }
 
   return (
     <>
-      {console.log(energy)}
       <NavMenu></NavMenu>
       <p>Total e Unidades {units.length}</p>
       <p>
@@ -55,7 +57,7 @@ export default function Dashboard() {
         Unidades Inativas
         {units.filter((isActive) => isActive.ativo === !true).length}
       </p>
-      <p>Soma toda energia: {filtered} </p>
+      <p>Media: {filtered} </p>
 
       <div>
         <Line
@@ -73,25 +75,12 @@ export default function Dashboard() {
             },
           }}
           data={{
-            labels: [
-              "Jan",
-              "Fev",
-              "Mar",
-              "Abr",
-              "Mai",
-              "Jun",
-              "Jul",
-              "Ago",
-              "Set",
-              "Out",
-              "Nov",
-              "Dez",
-            ],
+            labels: energy.map((valor) => valor.mes),
             datasets: [
               {
                 id: 1,
                 label: "Energia Gerada",
-                data: energy,
+                data: energy.map((valor) => valor.geracao_energia),
                 borderColor: "rgb(53, 162, 235)",
                 backgroundColor: "rgba(53, 162, 235, 0.5)",
               },
