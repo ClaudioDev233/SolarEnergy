@@ -26,17 +26,17 @@ export function retornaGeracoesPorMes(geracaoCompleta) {
 }
 
 /* function sorted(item1, item2) {
-  return parseInt(item1.mes) > parseInt(item2.mes); transformar em data e comparar a data
+  return parseInt(item1.mes) > parseInt(item2.mes);
 }
 
- function converteMesLabel(grupoMes) {
+function converteMesLabel(grupoMes) {
   const [ano, mes] = grupoMes.split("-");
   const mesFormatado = MESES.filter((digitos) => digitos.digito === mes)[0].mes;
 
   return mesFormatado + "/" + ano;
-} 
+}
 
- const MESES = [
+const MESES = [
   { mes: "Jan", digito: "01" },
   { mes: "Fev", digito: "02" },
   { mes: "Mar", digito: "03" },
@@ -50,5 +50,4 @@ export function retornaGeracoesPorMes(geracaoCompleta) {
   { mes: "Nov", digito: "11" },
   { mes: "Dez", digito: "12" },
 ];
- 
  */
