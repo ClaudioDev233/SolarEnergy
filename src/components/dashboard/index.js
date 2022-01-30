@@ -38,10 +38,11 @@ export default function DashboardInfo() {
         parseInt(geracoes.energia_gerada)
       );
       setEnergy(retornaGeracoesPorMes(generation));
+      console.log(units);
       const sumPower = powerArray.reduce((valor1, valor2) => valor2 + valor1);
       const powerAverage =
-        units.length > 0 ? Math.round(sumPower / units.length) : null;
-      powerAverage >= 0 ? setFiltered(powerAverage) : setFiltered(0);
+        units.length < 1 ? sumPower / 1 : sumPower / units.length;
+      powerAverage > 0 ? setFiltered(powerAverage) : setFiltered(0);
     }
   }
 
