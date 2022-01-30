@@ -17,7 +17,6 @@ export default function CreateNewUnit() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("estou aqui");
     axios
       .post("http://localhost:3001/unidades", {
         apelido: nickname,

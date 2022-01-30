@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import { retornaGeracoesPorMes } from "../../utils";
+import { Card } from "./styles";
 
 export default function DashboardInfo() {
   const [units, setUnits] = useState([]);
@@ -48,46 +49,57 @@ export default function DashboardInfo() {
 
   return (
     <>
-      <p>Total e Unidades {units.length}</p>
-      <p>
-        Unidades Ativas
-        {units.filter((isActive) => isActive.ativo === true).length}
-      </p>
-      <p>
-        Unidades Inativas
-        {units.filter((isActive) => isActive.ativo === !true).length}
-      </p>
-      <p>Media: {filtered} </p>
-
-      <div>
-        <Line
-          datasetIdKey="id"
-          options={{
-            responsive: true,
-            plugins: {
-              legend: {
-                position: "top",
+      <section>
+        <div>
+          <Card>
+            <p>Total e Unidades {units.length}</p>
+          </Card>
+          <Card>
+            <p>
+              Unidades Ativas
+              {units.filter((isActive) => isActive.ativo === true).length}
+            </p>
+          </Card>
+          <Card>
+            <p>
+              Unidades Inativas
+              {units.filter((isActive) => isActive.ativo === !true).length}
+            </p>
+          </Card>
+          <Card>
+            <p>Media: {filtered} </p>
+          </Card>
+        </div>
+        <div>
+          <Line
+            datasetIdKey="id"
+            options={{
+              responsive: true,
+              plugins: {
+                legend: {
+                  position: "top",
+                },
+                title: {
+                  display: true,
+                  text: "Consumo Mensal",
+                },
               },
-              title: {
-                display: true,
-                text: "Consumo Mensal",
-              },
-            },
-          }}
-          data={{
-            labels: energy.map((valor) => valor.mes),
-            datasets: [
-              {
-                id: 1,
-                label: "Energia Gerada",
-                data: energy.map((valor) => valor.geracao_energia), //verificar
-                borderColor: "rgb(53, 162, 235)",
-                backgroundColor: "rgba(53, 162, 235, 0.5)",
-              },
-            ],
-          }}
-        />
-      </div>
+            }}
+            data={{
+              labels: energy.map((valor) => valor.mes),
+              datasets: [
+                {
+                  id: 1,
+                  label: "Energia Gerada",
+                  data: energy.map((valor) => valor.geracao_energia), //verificar
+                  borderColor: "rgb(53, 162, 235)",
+                  backgroundColor: "rgba(53, 162, 235, 0.5)",
+                },
+              ],
+            }}
+          />
+        </div>
+      </section>
     </>
   );
 }
