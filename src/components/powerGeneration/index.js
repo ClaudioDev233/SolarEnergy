@@ -1,14 +1,16 @@
 import axios from "axios";
-import "react-datepicker/dist/react-datepicker.css";
+
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { useState, useEffect } from "react";
 import InputDate from "../inputDate";
 import Inputs from "../inputs";
-import { Container, Form, Label, Select, SubmitButton, Titulo } from "./styles";
+import { Container, Form, Label, Select, SubmitButton, Error } from "./styles";
 
 export default function UnitPowerGeneration() {
   const [data, setData] = useState([]);
-
+  const [error, setError] = useState("");
   const [month, setMonth] = useState("");
   const [energy, setEnergy] = useState("");
   const [id, setId] = useState("");
@@ -39,14 +41,22 @@ export default function UnitPowerGeneration() {
         energia_gerada: energy,
         mes: month,
       });
+      setError("");
+      toast.success(`Lançamento realizado com sucesso`, {
+        autoClose: 2000,
+      });
     } else {
-      console.log("esse mes ja foi cadastrado");
+      toast.error(`Lançamento já existente`, {
+        autoClose: 2000,
+      });
     }
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleCheckUnityGeneration();
+    energy === "" || id === undefined || month === ""
+      ? setError("Campo Necessario")
+      : handleCheckUnityGeneration();
   }
 
   return (
@@ -80,11 +90,13 @@ export default function UnitPowerGeneration() {
             onChange={(e) => {
               setMonth(e.target.value);
             }}
+            errorMessage={error}
           />
           <Inputs
             label="Total Kw Gerado"
             type="number"
             onChange={(e) => setEnergy(e.target.value)}
+            errorMessage={error}
           />
           <SubmitButton type="submit" value="Cadastrar"></SubmitButton>
         </Form>

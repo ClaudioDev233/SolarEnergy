@@ -5,12 +5,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import { retornaGeracoesPorMes } from "../../utils";
-import { Card } from "./styles";
+import { Card, CardHolder, ChartContainer, Container, Titulo } from "./styles";
 
 export default function DashboardInfo() {
   const [units, setUnits] = useState([]);
   const [generation, setGeneration] = useState([]);
-  const [filtered, setFiltered] = useState([]);
+  const [filtered, setFiltered] = useState("");
   const [energy, setEnergy] = useState([]);
 
   useEffect(() => {
@@ -41,36 +41,40 @@ export default function DashboardInfo() {
       );
       setEnergy(retornaGeracoesPorMes(generation));
       const sumPower = powerArray.reduce((valor1, valor2) => valor2 + valor1);
-      const powerAverage = Math.round(sumPower / units.length);
-      powerAverage >= 1 ? setFiltered(powerAverage) : setFiltered("");
+      const powerAverage =
+        units.length > 0 ? Math.round(sumPower / units.length) : null;
+      powerAverage >= 0 ? setFiltered(powerAverage) : setFiltered(0);
     }
-    console.log(energy);
+    console.log(units.length);
   }
 
   return (
     <>
-      <section>
-        <div>
+      <Container>
+        <CardHolder>
           <Card>
-            <p>Total e Unidades {units.length}</p>
+            <p>Total de Unidades</p>
+            <span>{units.length}</span>
           </Card>
           <Card>
-            <p>
-              Unidades Ativas
+            <p>Unidades Ativas</p>
+            <span>
               {units.filter((isActive) => isActive.ativo === true).length}
-            </p>
+            </span>
           </Card>
           <Card>
-            <p>
-              Unidades Inativas
+            <p>Unidades Inativas</p>
+            <span>
               {units.filter((isActive) => isActive.ativo === !true).length}
-            </p>
+            </span>
           </Card>
           <Card>
-            <p>Media: {filtered} </p>
+            <p>Media:</p>
+            <span>{filtered}kw</span>
           </Card>
-        </div>
-        <div>
+        </CardHolder>
+        <ChartContainer>
+          <Titulo>Total Energia Gerada por Mês</Titulo>
           <Line
             datasetIdKey="id"
             options={{
@@ -81,7 +85,7 @@ export default function DashboardInfo() {
                 },
                 title: {
                   display: true,
-                  text: "Consumo Mensal",
+                  text: "Total Energia Gerada por Mês",
                 },
               },
             }}
@@ -98,8 +102,8 @@ export default function DashboardInfo() {
               ],
             }}
           />
-        </div>
-      </section>
+        </ChartContainer>
+      </Container>
     </>
   );
 }

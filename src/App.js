@@ -1,5 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import LoginPage from "./pages/login";
 import Dashboard from "./pages/dashboard";
 import PowerGeneration from "./pages/unitPowerGeneration";
@@ -21,6 +25,7 @@ function App() {
           element={<PowerGeneration />}
         ></Route>
       </Routes>
+      <ToastContainer />
     </>
   );
 }

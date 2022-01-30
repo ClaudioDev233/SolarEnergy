@@ -15,3 +15,8 @@ export const Input = styled.input`
   width: 200px;
   height: 33px;
 `;
+
+export const Error = styled.p`
+  color: #dc3545;
+  font-size: 11px;
+`;

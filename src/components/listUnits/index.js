@@ -41,6 +41,7 @@ export default function ListUnits() {
     });
 
     removeFromTable(unit.id);
+    // toas aqui
   }
 
   function removeFromTable(id) {
