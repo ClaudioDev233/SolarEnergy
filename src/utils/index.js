@@ -1,5 +1,6 @@
 export function retornaGeracoesPorMes(geracaoCompleta) {
   const grupoMes = [];
+
   geracaoCompleta = geracaoCompleta.sort(sorted);
 
   geracaoCompleta.forEach((parGeracaoMes) => {
@@ -7,7 +8,6 @@ export function retornaGeracoesPorMes(geracaoCompleta) {
       !grupoMes.filter((itemGrupoMes) => parGeracaoMes.mes === itemGrupoMes.mes)
         .length > 0
     ) {
-      console.log(grupoMes);
       grupoMes.push({
         mes: parGeracaoMes.mes, // ussi aqui ta bugando
         geracao_energia: parseInt(parGeracaoMes.energia_gerada),
@@ -27,7 +27,7 @@ export function retornaGeracoesPorMes(geracaoCompleta) {
 }
 
 function sorted(item1, item2) {
-  return parseInt(item2.mes) < parseInt(item1.mes); //transformar em data e comparar a data
+  return parseInt(item1.mes) > parseInt(item2.mes); //transformar em data e comparar a data
 }
 
 function converteMesLabel(grupoMes) {

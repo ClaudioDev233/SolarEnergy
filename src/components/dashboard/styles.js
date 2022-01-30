@@ -26,7 +26,6 @@ export const Card = styled.div`
   color: #9fa2b4;
   p {
     font-size: 19px;
-    color: #9fa2b4;
   }
   span {
     font-size: 40px;
@@ -41,6 +40,7 @@ export const Card = styled.div`
       color: #3751ff;
     }
     border-color: #3751ff;
+    cursor: pointer;
   }
 `;
 

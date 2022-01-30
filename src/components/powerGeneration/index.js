@@ -90,13 +90,13 @@ export default function UnitPowerGeneration() {
             onChange={(e) => {
               setMonth(e.target.value);
             }}
-            errorMessage={error}
+            errorMessage={month === "" ? error : <></>}
           />
           <Inputs
             label="Total Kw Gerado"
             type="number"
             onChange={(e) => setEnergy(e.target.value)}
-            errorMessage={error}
+            errorMessage={energy === "" ? error : <></>}
           />
           <SubmitButton type="submit" value="Cadastrar"></SubmitButton>
         </Form>

@@ -21,26 +21,33 @@ export default function Template({ children, titulo }) {
             <img src={logo1}></img>
           </section>
           <section>
-            <Button onClick={() => history("/dashboard")}>
-              <FaChartPie />
+            <ul>
+              <li>
+                <Button onClick={() => history("/dashboard")}>
+                  <span>
+                    <FaChartPie />
+                  </span>
+                  <p>Dashboard</p>
+                </Button>
+              </li>
+              <li>
+                <Button onClick={() => history("/unitList")}>
+                  <span>
+                    <FaChartBar />
+                  </span>
+                  <p>Unidades</p>
+                </Button>
+              </li>
+              <li>
+                <Button onClick={() => history("/unitPowerGeneration")}>
+                  <span>
+                    <FaCog />
+                  </span>
 
-              <p>Dashboard</p>
-            </Button>
-
-            <Button onClick={() => history("/unitList")}>
-              <FaChartBar />
-              <p>Unidades</p>
-            </Button>
-
-            <Button onClick={() => history("/unitPowerGeneration")}>
-              <div>
-                <FaCog />
-              </div>
-
-              <div>
-                <p>Cadastro de energia gerada</p>
-              </div>
-            </Button>
+                  <p>Cadastro de energia gerada</p>
+                </Button>
+              </li>
+            </ul>
           </section>
         </NavBar>
         <Section className="Resto">

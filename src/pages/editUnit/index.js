@@ -3,7 +3,7 @@ import Template from "../../components/menu";
 export default function EditUnit() {
   return (
     <Template titulo="Unidades">
-      <UnitOption></UnitOption>;
+      <UnitOption></UnitOption>
     </Template>
   );
 }

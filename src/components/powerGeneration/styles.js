@@ -42,3 +42,8 @@ export const Select = styled.select`
   width: 200px;
   height: 30px;
 `;
+
+export const Error = styled.p`
+  color: #dc3545;
+  font-size: 11px;
+`;

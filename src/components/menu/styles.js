@@ -11,7 +11,7 @@ export const MainContainer = styled.div`
 export const NavBar = styled.nav`
   display: flex;
   flex-direction: column;
-
+  align-items: center;
   background-color: #ffffff;
   img {
     height: 200px;
@@ -23,7 +23,6 @@ export const Button = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 16px, 24px, 16px, 24px;
   gap: 10px;
   width: 252px;
   height: 64px;
@@ -31,9 +30,13 @@ export const Button = styled.div`
   color: #a098ae;
   border-radius: 20px;
 
-  div {
-    align-self: left;
-    text-align: left;
+  span {
+    width: 30px;
+    margin-left: 10px;
+    align-items: center;
+  }
+  p {
+    width: 150px;
   }
   &:hover {
     color: #ffffff;

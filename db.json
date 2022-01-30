@@ -1,32 +1,23 @@
 {
-  "unidades": [
-    {
-      "apelido": "1",
-      "local": "1",
-      "marca": "1",
-      "modelo": "1",
-      "ativo": true,
-      "id": 1
-    }
-  ],
+  "unidades": [],
   "geracoes": [
     {
-      "unidade_id": "",
-      "energia_gerada": "",
-      "mes": "",
+      "unidade_id": "1",
+      "energia_gerada": "15",
+      "mes": "2022-01",
       "id": 3
     },
     {
       "unidade_id": "1",
-      "energia_gerada": "12",
-      "mes": "2022-02",
-      "id": 4
+      "energia_gerada": "10",
+      "mes": "2022-04",
+      "id": 5
     },
     {
-      "unidade_id": "1",
-      "energia_gerada": "12",
-      "mes": "2022-03",
-      "id": 5
+      "unidade_id": "",
+      "energia_gerada": "111",
+      "mes": "2022-02",
+      "id": 7
     }
   ]
 }
