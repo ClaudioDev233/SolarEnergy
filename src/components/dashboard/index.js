@@ -23,7 +23,6 @@ export default function DashboardInfo() {
         .then((resp) => setGeneration(resp.data));
     }
     getData();
-    //colocar um toast aqui
   }, []);
 
   useEffect(() => {
@@ -93,7 +92,7 @@ export default function DashboardInfo() {
                 {
                   id: 1,
                   label: "Energia Gerada",
-                  data: energy.map((valor) => valor.geracao_energia), //verificar
+                  data: energy.map((valor) => valor.geracao_energia),
                   borderColor: "rgb(53, 162, 235)",
                   backgroundColor: "rgba(53, 162, 235, 0.5)",
                 },

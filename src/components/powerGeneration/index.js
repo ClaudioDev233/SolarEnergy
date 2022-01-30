@@ -4,8 +4,8 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { useState, useEffect, Children } from "react";
-import InputDate from "../inputDate";
-import Inputs from "../inputs";
+import InputDate from "../InputDate";
+import Inputs from "../Inputs";
 import { Container, Form, Label, Select, SubmitButton } from "./styles";
 
 export default function UnitPowerGeneration() {

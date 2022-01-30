@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-import Inputs from "../inputs";
+import Inputs from "../Inputs";
 import { Titulo, Container, Form, SubmitButton } from "./styles";
 import axios from "axios";
-import Checkbox from "../checkbox";
+import Checkbox from "../Checkbox";
 
 export default function UnitOption() {
   const redirect = useNavigate();

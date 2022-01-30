@@ -1,13 +1,21 @@
 import logo1 from "../../assets/images/logo1.png";
+import login from "../../assets/images/login.png";
 import { useEffect, useState } from "react";
-import Inputs from "../inputs";
+
 import { useNavigate } from "react-router-dom";
 import { emailSchema, passwordSchema } from "../../Validations/userValidation";
+import { FaRegEnvelope, FaLock } from "react-icons/fa";
 import {
   LoginContainer,
   LoginSection,
   LoginForm,
   ErrorMessage,
+  LoginImage,
+  Container,
+  Logo,
+  Inputs,
+  SubmitButton,
+  Titulo,
 } from "./styles";
 
 export default function Login() {
@@ -19,7 +27,7 @@ export default function Login() {
 
   const history = useNavigate(); // redireciona
 
-  async function coiso(event) {
+  async function handleLogin(event) {
     event.preventDefault();
 
     let formData = {
@@ -30,18 +38,18 @@ export default function Login() {
     if (emailIsValid) {
       setValidateEmail("");
     } else {
-      setValidateEmail("Erro no email");
+      setValidateEmail("Email Inválido");
     }
     const passordValid = await passwordSchema.isValid(formData);
     if (passordValid) {
       setValidatePassword("");
     } else {
-      setValidatePassword("Erro na senha");
+      setValidatePassword("Senha inválida");
     }
 
     if (passordValid && emailIsValid === true) {
       setValidate(true);
-      history("/dashboard"); //redireciona
+      history("/dashboard");
     } else if (passordValid === true && emailIsValid === false) {
       setValidate(false);
     } else if (passordValid === false && emailIsValid === true) {
@@ -54,7 +62,6 @@ export default function Login() {
   useEffect(() => {
     async function handleValidation() {
       if (validate === true) {
-        alert("Logando");
       }
     }
     handleValidation();
@@ -62,36 +69,54 @@ export default function Login() {
 
   return (
     <>
-      <LoginContainer>
-        <LoginSection>
-          <img src={logo1}></img>
-          <p>{email}</p>
-          <p>{senha}</p>
-          <LoginForm onSubmit={coiso}>
-            <Inputs
-              type="text"
-              placeholder="Email"
-              onChange={(event) => {
-                setEmail(event.target.value);
-              }}
-            ></Inputs>
-            <ErrorMessage>
-              {validate === false ? <p>{validateEmail}</p> : <></>}
-            </ErrorMessage>
-            <Inputs
-              type="password"
-              placeholder="Senha"
-              onChange={(event) => {
-                setSenha(event.target.value);
-              }}
-            ></Inputs>
-            <ErrorMessage>
-              {validate === false ? <p>{validatePassword}</p> : <></>}
-            </ErrorMessage>
-            <Inputs type="submit" name="Olá"></Inputs>
-          </LoginForm>
-        </LoginSection>
-      </LoginContainer>
+      <Container>
+        <LoginImage>
+          <img src={login}></img>
+        </LoginImage>
+        <LoginContainer>
+          <LoginSection>
+            <Logo src={logo1}></Logo>
+            <Titulo>Seja bem vindo</Titulo>
+
+            <LoginForm onSubmit={handleLogin}>
+              <Inputs>
+                <span>
+                  <FaRegEnvelope></FaRegEnvelope>
+                </span>
+                <input
+                  type="text"
+                  placeholder="Email"
+                  onChange={(event) => {
+                    setEmail(event.target.value);
+                  }}
+                ></input>
+              </Inputs>
+              <ErrorMessage>
+                {validate === false ? <p>{validateEmail}</p> : <></>}
+              </ErrorMessage>
+
+              <Inputs>
+                <span>
+                  <FaLock></FaLock>
+                </span>
+                <input
+                  type="password"
+                  placeholder="Senha"
+                  onChange={(event) => {
+                    setSenha(event.target.value);
+                  }}
+                ></input>
+              </Inputs>
+              <ErrorMessage>
+                {validate === false ? <p>{validatePassword}</p> : <></>}
+              </ErrorMessage>
+              <SubmitButton>
+                <input type="submit" value="Entrar"></input>
+              </SubmitButton>
+            </LoginForm>
+          </LoginSection>
+        </LoginContainer>
+      </Container>
     </>
   );
 }

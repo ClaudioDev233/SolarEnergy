@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Checkbox from "../checkbox";
+import Checkbox from "../Checkbox";
 
-import Inputs from "../inputs";
+import Inputs from "../Inputs";
 import { Titulo, Container, Form, SubmitButton } from "./styles";
 
 export default function CreateNewUnit() {

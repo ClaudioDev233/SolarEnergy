@@ -1,7 +1,6 @@
+// funcao para agrupar os meses e empilhar a geração de energia
 export function retornaGeracoesPorMes(geracaoCompleta) {
   const grupoMes = [];
-
-  geracaoCompleta = geracaoCompleta.sort(sorted);
 
   geracaoCompleta.forEach((parGeracaoMes) => {
     if (
@@ -9,7 +8,7 @@ export function retornaGeracoesPorMes(geracaoCompleta) {
         .length > 0
     ) {
       grupoMes.push({
-        mes: parGeracaoMes.mes, // ussi aqui ta bugando
+        mes: parGeracaoMes.mes, //
         geracao_energia: parseInt(parGeracaoMes.energia_gerada),
       });
     } else {
@@ -26,18 +25,18 @@ export function retornaGeracoesPorMes(geracaoCompleta) {
   return grupoMes;
 }
 
-function sorted(item1, item2) {
-  return parseInt(item1.mes) > parseInt(item2.mes); //transformar em data e comparar a data
+/* function sorted(item1, item2) {
+  return parseInt(item1.mes) > parseInt(item2.mes); transformar em data e comparar a data
 }
 
-/* function converteMesLabel(grupoMes) {
+ function converteMesLabel(grupoMes) {
   const [ano, mes] = grupoMes.split("-");
   const mesFormatado = MESES.filter((digitos) => digitos.digito === mes)[0].mes;
 
   return mesFormatado + "/" + ano;
-} */
+} 
 
-/* const MESES = [
+ const MESES = [
   { mes: "Jan", digito: "01" },
   { mes: "Fev", digito: "02" },
   { mes: "Mar", digito: "03" },
@@ -51,4 +50,5 @@ function sorted(item1, item2) {
   { mes: "Nov", digito: "11" },
   { mes: "Dez", digito: "12" },
 ];
+ 
  */

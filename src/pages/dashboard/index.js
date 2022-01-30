@@ -1,5 +1,5 @@
-import DashboardInfo from "../../components/dashboard";
-import Template from "../../components/menu";
+import DashboardInfo from "../../components/Dashboard";
+import Template from "../../components/Template";
 
 export default function Dashboard() {
   return (

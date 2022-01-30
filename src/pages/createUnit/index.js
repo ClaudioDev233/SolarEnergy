@@ -1,5 +1,5 @@
-import CreateNewUnit from "../../components/createNewUnit";
-import Template from "../../components/menu";
+import CreateNewUnit from "../../components/CreateNewUnit";
+import Template from "../../components/Template";
 export default function CreateUnit() {
   return (
     <Template titulo="Unidade">

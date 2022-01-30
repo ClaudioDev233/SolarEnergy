@@ -1,5 +1,5 @@
 import UnitOption from "../../components/EditUnit";
-import Template from "../../components/menu";
+import Template from "../../components/Template";
 export default function EditUnit() {
   return (
     <Template titulo="Unidades">

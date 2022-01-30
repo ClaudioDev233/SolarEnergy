@@ -29,6 +29,7 @@ export const Button = styled.div`
   font-size: 18px;
   color: #a098ae;
   border-radius: 20px;
+  cursor: pointer;
 
   span {
     width: 30px;
