@@ -12,20 +12,22 @@ export default function CreateNewUnit() {
   const [brand, setBrand] = useState("");
   const [model, setModel] = useState("");
   const [active, setActive] = useState("");
-
+  const [error, setError] = useState("");
   const redirect = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
-    axios
-      .post("http://localhost:3001/unidades", {
-        apelido: nickname,
-        local: local,
-        marca: brand,
-        modelo: model,
-        ativo: active,
-      })
-      .then(redirect("/unitList"));
+    nickname === "" || local === "" || brand === "" || model === ""
+      ? setError("Campo Requerido")
+      : axios
+          .post("http://localhost:3001/unidades", {
+            apelido: nickname,
+            local: local,
+            marca: brand,
+            modelo: model,
+            ativo: active,
+          })
+          .then(redirect("/unitList"));
   }
 
   return (
@@ -44,6 +46,7 @@ export default function CreateNewUnit() {
             onChange={(e) => {
               setNickname(e.target.value);
             }}
+            errorMessage={nickname === "" ? error : <></>}
           ></Inputs>
           <Inputs
             label="Local"
@@ -52,6 +55,7 @@ export default function CreateNewUnit() {
             onChange={(e) => {
               setLocal(e.target.value);
             }}
+            errorMessage={local === "" ? error : <></>}
           ></Inputs>
 
           <Inputs
@@ -61,6 +65,7 @@ export default function CreateNewUnit() {
             onChange={(e) => {
               setBrand(e.target.value);
             }}
+            errorMessage={brand === "" ? error : <></>}
           ></Inputs>
           <Inputs
             label="Modelo"
@@ -69,6 +74,7 @@ export default function CreateNewUnit() {
             onChange={(e) => {
               setModel(e.target.value);
             }}
+            errorMessage={model === "" ? error : <></>}
           ></Inputs>
 
           <Checkbox

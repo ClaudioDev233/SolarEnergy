@@ -3,10 +3,10 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Children } from "react";
 import InputDate from "../inputDate";
 import Inputs from "../inputs";
-import { Container, Form, Label, Select, SubmitButton, Error } from "./styles";
+import { Container, Form, Label, Select, SubmitButton } from "./styles";
 
 export default function UnitPowerGeneration() {
   const [data, setData] = useState([]);
@@ -78,9 +78,11 @@ export default function UnitPowerGeneration() {
               <option value="" disabled>
                 Selecione
               </option>
-              {data.map((unidade) => {
-                return <option value={unidade.id}>{unidade.apelido}</option>;
-              })}
+              {Children.toArray(
+                data.map((unidade) => {
+                  return <option value={unidade.id}>{unidade.apelido}</option>;
+                })
+              )}
             </Select>
           </Label>
 

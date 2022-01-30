@@ -1,4 +1,3 @@
-import NavMenu from "../../components/menu";
 import { Chart as ChartJS } from "chart.js/auto";
 import { Line } from "react-chartjs-2";
 import { useState, useEffect } from "react";
@@ -45,7 +44,6 @@ export default function DashboardInfo() {
         units.length > 0 ? Math.round(sumPower / units.length) : null;
       powerAverage >= 0 ? setFiltered(powerAverage) : setFiltered(0);
     }
-    console.log(units.length);
   }
 
   return (
@@ -69,7 +67,7 @@ export default function DashboardInfo() {
             </span>
           </Card>
           <Card>
-            <p>Media:</p>
+            <p>Media</p>
             <span>{filtered}kw</span>
           </Card>
         </CardHolder>

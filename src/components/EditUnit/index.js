@@ -96,6 +96,7 @@ export default function UnitOption() {
           <Checkbox
             label="Ativo"
             type="checkbox"
+            checked={active || ""}
             onChange={(e) => {
               setActive(e.target.checked);
             }}

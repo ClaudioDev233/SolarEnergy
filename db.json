@@ -1,23 +1,13 @@
 {
-  "unidades": [],
-  "geracoes": [
+  "unidades": [
     {
-      "unidade_id": "1",
-      "energia_gerada": "15",
-      "mes": "2022-01",
-      "id": 3
-    },
-    {
-      "unidade_id": "1",
-      "energia_gerada": "10",
-      "mes": "2022-04",
-      "id": 5
-    },
-    {
-      "unidade_id": "",
-      "energia_gerada": "111",
-      "mes": "2022-02",
-      "id": 7
+      "apelido": "1",
+      "local": "1",
+      "marca": "1",
+      "modelo": "1",
+      "ativo": true,
+      "id": 1
     }
-  ]
+  ],
+  "geracoes": []
 }

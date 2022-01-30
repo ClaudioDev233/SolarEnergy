@@ -1,6 +1,8 @@
 import { useState, useEffect, Children } from "react";
 
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import axios from "axios";
 
@@ -41,7 +43,9 @@ export default function ListUnits() {
     });
 
     removeFromTable(unit.id);
-    // toas aqui
+    toast.success(`${unit.apelido} foi removido com sucesso`, {
+      autoClose: 2000,
+    });
   }
 
   function removeFromTable(id) {
@@ -84,14 +88,16 @@ export default function ListUnits() {
                       <td> {unidade.marca} </td>
                       <td> {unidade.modelo} </td>
                       <td>
-                        <Button
-                          bg="#8DB51B"
-                          tamanho={78}
-                          altura={40}
-                          radius={4}
-                        >
-                          <Link to={`/editUnit/${unidade.id}`}>Editar</Link>
-                        </Button>
+                        <Link to={`/editUnit/${unidade.id}`}>
+                          <Button
+                            bg="#8DB51B"
+                            tamanho={78}
+                            altura={40}
+                            radius={4}
+                          >
+                            Editar
+                          </Button>
+                        </Link>
                       </td>
                       <td>
                         <Button
@@ -112,6 +118,7 @@ export default function ListUnits() {
               )}
             </Tbody>
           </Table>
+
           <Button
             bg="#4C5DF1"
             tamanho={252}
@@ -119,7 +126,7 @@ export default function ListUnits() {
             radius={20}
             align="flex-end"
           >
-            <Link to={`/createUnit/`}>Criar Nova Unidade</Link>
+            <Link to={`/createUnit/`}>Nova Unidade</Link>
           </Button>
         </TableContainer>
       </Section>

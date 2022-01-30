@@ -28,4 +28,5 @@ export const SubmitButton = styled.input`
   border-radius: 20px;
   background-color: #4c5df1;
   filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+  cursor: pointer;
 `;

@@ -45,6 +45,9 @@ export const Card = styled.div`
 `;
 
 export const ChartContainer = styled.div`
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  padding: 30px;
   width: 961px;
   height: 646px;
 `;
