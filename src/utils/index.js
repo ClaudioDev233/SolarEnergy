@@ -25,7 +25,7 @@ export function retornaGeracoesPorMes(geracaoCompleta) {
   return grupoMes;
 }
 
-/* function sorted(item1, item2) {
+function sorted(item1, item2) {
   return parseInt(item1.mes) > parseInt(item2.mes);
 }
 
@@ -36,7 +36,7 @@ function converteMesLabel(grupoMes) {
   return mesFormatado + "/" + ano;
 }
 
-const MESES = [
+/* const MESES = [
   { mes: "Jan", digito: "01" },
   { mes: "Fev", digito: "02" },
   { mes: "Mar", digito: "03" },
